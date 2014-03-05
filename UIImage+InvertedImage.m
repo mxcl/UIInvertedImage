@@ -5,7 +5,7 @@
 
 - (UIImage *)invertedImage {
     CGRect rect = (CGRect){.size = self.size};
-    UIGraphicsBeginImageContext(rect.size);
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, self.scale);
     CGContextRef ctx = UIGraphicsGetCurrentContext();
 
     CGContextSetBlendMode(ctx, kCGBlendModeCopy);
@@ -13,7 +13,7 @@
     CGContextSetBlendMode(ctx, kCGBlendModeDifference);
 
     // transform from CG coords to UI coords
-    CGContextTranslateCTM(ctx, 0, self.size.height);
+    CGContextTranslateCTM(ctx, 0, rect.size.height);
     CGContextScaleCTM(ctx, 1.0, -1.0);
 
     // mask it
