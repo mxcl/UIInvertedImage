@@ -1,3 +1,5 @@
+Inverts the colors in an image.
+
 ```ruby
 pod 'UIImage+InvertedImage'
 ```
